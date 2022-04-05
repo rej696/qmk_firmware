@@ -6,7 +6,7 @@
 // entirely and just use numbers.
 enum layer_names {
   _COLEMAK = 0,
-  _MOUSE = 2,
+  _MOUSELAYER = 2,
   _LOWER = 3,
   _RAISE = 4,
   _ADJUST = 16
@@ -14,7 +14,7 @@ enum layer_names {
 
 enum custom_keycodes {
   COLEMAK = SAFE_RANGE,
-  MOUSE,
+  MOUSELAYER,
   LOWER,
   RAISE,
   ADJUST,
@@ -42,8 +42,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_COLEMAK] = LAYOUT_ortho_4x12 ( \
   KC_Q, KC_W, KC_F, KC_P, KC_B, XXXXXXX, XXXXXXX, KC_J, KC_L, KC_U, KC_Y, KC_BSPC, \
-  MOD_LGUI(KC_A), MOD_LALT(KC_R), MOD_LCTL(KC_S), MOD_LSFT(KC_T), KC_G, XXXXXXX, XXXXXXX, KC_M, MOD_LSFT(KC_N), MOD_LCTL(KC_E), MOD_LALT(KC_I), MOD_LGUI(KC_O), \
-  LT(MOUSE, KC_Z), KC_X, KC_C, KC_D, KC_V, XXXXXXX, XXXXXXX, KC_K, KC_H, KC_COMM, KC_DOT, KC_SLSH, \
+  GUI_T(KC_A), ALT_T(KC_R), CTL_T(KC_S), SFT_T(KC_T), KC_G, XXXXXXX, XXXXXXX, KC_M, SFT_T(KC_N), CTL_T(KC_E), ALT_T(KC_I), GUI_T(KC_O), \
+  LT(MOUSELAYER, KC_Z), KC_X, KC_C, KC_D, KC_V, XXXXXXX, XXXXXXX, KC_K, KC_H, KC_COMM, KC_DOT, KC_SLSH, \
   XXXXXXX,  XXXXXXX, KC_LCTL, LOWER, KC_LSFT, KC_LCTL, KC_LCTL, KC_SPC, RAISE, KC_LCTL, XXXXXXX, XXXXXXX \
 ),
 
@@ -58,11 +58,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |      |      | Ctrl |      | Shift| Ctrl | Ctrl | Space|      | CTRL |      |      |
  * `-----------------------------------------------------------------------------------'
  */
-[_MOUSE] = LAYOUT_ortho_4x12 ( \
+[_MOUSELAYER] = LAYOUT_ortho_4x12 ( \
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
   XXXXXXX, KC_BTN1, KC_BTN3, KC_BTN2, KC_WH_U, XXXXXXX, XXXXXXX, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, XXXXXXX, \
-  XXXXXXX, LCTL(KC_X), LCTL(KC_C), KC_WH_D, LCTL(KC_V), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-  XXXXXXX,  XXXXXXX, KC_LCTRL, XXXXXXX, KC_LSFT, KC_LCTRL, KC_LCTRL, KC_SPC, XXXXXXX, KC_LCTRL, XXXXXXX, XXXXXXX \
+  _______, LCTL(KC_X), LCTL(KC_C), KC_WH_D, LCTL(KC_V), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______ \
 ),
 
 /* Lower
@@ -80,7 +80,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB, KC_HOME, KC_UP,   KC_END,  KC_LSFT,  XXXXXXX, XXXXXXX, XXXXXXX, KC_7, KC_8, KC_9, KC_DEL, \
   KC_ESC, KC_LEFT, KC_DOWN, KC_RIGHT, KC_LALT, XXXXXXX, XXXXXXX, XXXXXXX, KC_4, KC_5, KC_6, KC_ENT, \
   KC_LGUI, KC_PGUP, KC_INS,  KC_PGDN, KC_DEL,  XXXXXXX, XXXXXXX, XXXXXXX, KC_1, KC_2, KC_3, KC_DOT, \
-  _______, _______, _______, _______, _______, _______, _______,    KC_0, _______, _______, _______ \
+  _______, _______, _______, _______, _______, _______, _______,    KC_0, _______, _______, _______, _______ \
 ),
 
 /* Raise: punctuation layer
@@ -96,7 +96,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_RAISE] = LAYOUT_ortho_4x12( \
   KC_EXLM, KC_LCBR, KC_RCBR,  KC_AT,    KC_DLR, XXXXXXX, XXXXXXX, KC_HASH, KC_MINS, KC_PERC, KC_AMPR, KC_BSPC, \
-  KC_DQT,  KC_LPRN,  KC_RPRN, KC_QUOT, KC_NUHS, XXXXXXX, XXXXXXX, KC_UNDS, KC_EQL,  KC_CLN,  KC_SCLN, KC_ENT,  \
+  KC_DQT,  KC_LPRN,  KC_RPRN, KC_QUOT, KC_NUHS, XXXXXXX, XXXXXXX, KC_UNDS, KC_EQL,  KC_COLN,  KC_SCLN, KC_ENT,  \
   KC_NUBS, KC_LBRC,  KC_RBRC, KC_GRV,  KC_CIRC, XXXXXXX, XXXXXXX, KC_ASTR, KC_PLUS, KC_LABK, KC_RABK, KC_QUES, \
   _______, _______,  _______, _______, _______, _______, _______, _______,  _______, _______, _______, _______  \
 ),
@@ -143,11 +143,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 //      }
 //      return false;
 //      break;
-    case MOUSE:
+    case MOUSELAYER:
       if (record->event.pressed) {
-        layer_on(_MOUSE);
+        layer_on(_MOUSELAYER);
       } else {
-        layer_off(_MOUSE);
+        layer_off(_MOUSELAYER);
       }
       return false;
       break;

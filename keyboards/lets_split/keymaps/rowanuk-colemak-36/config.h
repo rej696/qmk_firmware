@@ -20,12 +20,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
-// comment the following lines if sounds are not desired
-// #define DEFAULT_LAYER_SONGS { SONG(QWERTY_SOUND), \
-//                              SONG(COLEMAK_SOUND), \
-//                              SONG(DVORAK_SOUND) \
-//                            }
-
 /* Use I2C or Serial, not both */
 
 #define USE_SERIAL
@@ -38,3 +32,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // #define EE_HANDS
 
 #define MK_3_SPEED
+
+#define TAPPING_TERM 200
+#define IGNORE_MOD_TAP_INTERRUPT
+#define TAPPING_FORCE_HOLD
