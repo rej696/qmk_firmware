@@ -6,9 +6,9 @@
 // entirely and just use numbers.
 enum layer_names {
   _COLEMAK = 0,
-  _LOWER = 3,
-  _RAISE = 4,
-  _ADJUST = 16
+  _LOWER = 1,
+  _RAISE = 2,
+  _ADJUST = 3
 };
 
 enum custom_keycodes {
