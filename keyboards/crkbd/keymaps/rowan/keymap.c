@@ -61,11 +61,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_LOWER] = LAYOUT_split_3x5_3(
   //,-------------------------------------------------.                    ,----------------------------------.
-       KC_TAB, LSFT(KC_GRV), KC_UNDS, KC_MINS, KC_HASH,                      KC_PGUP, KC_7, KC_8, KC_9, KC_DEL,
+       KC_TAB, LSFT(KC_GRV), KC_UNDS, KC_MINS, KC_HASH,                      XXXXXXX, KC_7, KC_8, KC_9, KC_DEL,
   //|--------+--------+--------+-------+--------------|                    |--------+-----+-----+-----+-------|
-       KC_ESC, KC_PERC, KC_AMPR, KC_EQL, LSFT(KC_NUHS),                      KC_PGDN, KC_4, KC_5, KC_6, KC_ENT,
+       KC_ESC, KC_PERC, KC_AMPR, KC_EQL, LSFT(KC_NUHS),                      XXXXXXX, KC_4, KC_5, KC_6, KC_ENT,
   //|--------+--------+--------+-------+--------------|                    |--------+-----+-----+-----+-------|
-     LSFT(KC_NUBS), KC_SCLN, KC_COLN, KC_PLUS, KC_CIRC,                         KC_0, KC_1, KC_2, KC_3, KC_DOT,
+     LSFT(KC_NUBS), KC_SCLN, KC_COLN, KC_PLUS, KC_ASTR,                         KC_0, KC_1, KC_2, KC_3, KC_DOT,
   //|--------+--------+-------------+--------+--------+--------|  |--------+--------+-----+-----+-----+-------|
                                       KC_LCTL, _______, KC_LSFT,   KC_SPC, ADJUST, KC_RALT
                                   //`--------------------------'  `-----------------------'
@@ -73,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* Raise: punctuation layer
    * ,-----------------------------------             -----------------------------------.
-   * |   !  |  {   |  }   | @(") |  $   |             | HOME |  -   |      | END  | INS  |
+   * |   !  |  {   |  }   | @(") |  $   |             | HOME | PGUP | PGDN | END  | INS  |
    * |------+------+------+------+------+             +------+------+------+------+------|
    * | "(@) |  (   |  )   |  '   |  #/~ |             | LEFT | DOWN | UP   | RIGHT|Enter |
    * |------+------+------+------+------+             +------+------+------+------+------|
@@ -85,7 +85,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_RAISE] = LAYOUT_split_3x5_3(
   //,--------------------------------------------.                    ,--------------------------------------------.
-      KC_EXLM, KC_LCBR, KC_RCBR,   KC_AT,  KC_DLR,                      KC_HOME, KC_MINS, XXXXXXX, KC_END,   KC_INS,
+      KC_EXLM, KC_LCBR, KC_RCBR,   KC_AT,  KC_DLR,                      KC_HOME, KC_PGDN, KC_PGUP, KC_END,   KC_INS,
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
        KC_DQT, KC_LPRN, KC_RPRN, KC_QUOT, KC_NUHS,                      KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT,  KC_ENT,
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
