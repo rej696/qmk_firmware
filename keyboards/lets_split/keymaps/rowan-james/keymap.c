@@ -6,16 +6,16 @@
 // entirely and just use numbers.
 enum layer_names {
   _QWERTY = 0,
-  _LOWER = 3,
-  _RAISE = 4,
-  _ADJUST = 16
+  _LOWER = 1,
+  _RAISE = 2,
+  _ADJUST = 3
 };
 
 enum custom_keycodes {
   QWERTY = SAFE_RANGE,
   LOWER,
   RAISE,
-  ADJUST,
+  ADJUST
 };
 
 // Fillers to make layering more clear
@@ -35,14 +35,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Shift |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl |      | GUI  | Alt  |Lower | Space|Space |Raise | Alt  | GUI  |ADJUST| CTRL |
+ * | Ctrl |      | GUI  | Alt  |Lower | Space|Space |Raise | Alt  | GUI  |      | CTRL |
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_ortho_4x12 ( \
   KC_TAB,  KC_Q,     KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC, \
   KC_ESC,  KC_A,     KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT, \
   KC_LSFT, KC_Z,     KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, \
-  KC_LCTRL,XXXXXXX,  KC_LGUI, KC_LALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_RALT,   KC_RGUI, ADJUST,  KC_RCTRL  \
+  KC_LCTRL,XXXXXXX,  KC_LGUI, KC_LALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_RALT,   KC_RGUI, XXXXXXX,  KC_RCTRL  \
 ),
 
 /* Lower
@@ -53,7 +53,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Shift|PageUp|  INS |PageDn|      |      |  0   |   1  |   2  |   3  |   .  | Shift|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | CTRL |      | GUI  | Alt  | Lower| SPACE|SPACE | Raise| Alt  | GUI  |ADJUST| CTRL |
+ * | CTRL |      | GUI  | Alt  | Lower| SPACE|SPACE | Raise| Alt  | GUI  |      | CTRL |
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_ortho_4x12( \
@@ -76,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_RAISE] = LAYOUT_ortho_4x12( \
   _______, KC_EXLM, KC_LCBR,  KC_RCBR, KC_AT,   KC_NUBS, KC_SLSH, KC_MINS, KC_PERC, KC_AMPR,  KC_HASH, KC_DEL,  \
-  _______,  KC_DQT,  KC_LPRN,  KC_RPRN, KC_QUOT, KC_NUHS, KC_UNDS, KC_EQL,  KC_LABK,  KC_RABK, KC_CLN,  _______, \
+  _______,  KC_DQT,  KC_LPRN,  KC_RPRN, KC_QUOT, KC_NUHS, KC_UNDS, KC_EQL,  KC_LABK,  KC_RABK, KC_COLN,  _______, \
   _______, KC_DLR,  KC_LBRC,  KC_RBRC, KC_GRV,  KC_CIRC, KC_ASTR, KC_PLUS, KC_COMM, KC_DOT,   KC_QUES, _______, \
   _______, _______,  _______,  _______, _______, _______, _______, _______,  _______, _______, _______, _______  \
 ),
@@ -107,24 +107,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   set_single_persistent_default_layer(_QWERTY);
   switch (keycode) {
-//    case QWERTY:
-//      if (record->event.pressed) {
-//        set_single_persistent_default_layer(_QWERTY);
-//      }
-//      return false;
-//      break;
-//    case COLEMAK:
-//      if (record->event.pressed) {
-//        set_single_persistent_default_layer(_COLEMAK);
-//      }
-//      return false;
-//      break;
-//    case DVORAK:
-//      if (record->event.pressed) {
-//        set_single_persistent_default_layer(_DVORAK);
-//      }
-//      return false;
-//      break;
     case LOWER:
       if (record->event.pressed) {
         layer_on(_LOWER);
